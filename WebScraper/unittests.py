@@ -1,7 +1,7 @@
 import os.path
 import unittest
-import webscraper.utils as ut
-from web_scraper.settings import STATIC_URL
+import api.utils as ut
+from WebScraper.settings import STATIC_URL
 
 
 class WebScraperUnitTests(unittest.TestCase):
@@ -11,7 +11,7 @@ class WebScraperUnitTests(unittest.TestCase):
 
         # self.good_url = 'http://msobiczewski.pythonanywhere.com/'
         self.good_url = 'https://semantive.pl/'
-        self.good_url_no_image = 'http://0.0.0.0:8000/webscraper/site/'
+        self.good_url_no_image = 'http://0.0.0.0:8000/api/site/'
         self.bad_url = 'http://sdgdsgdsgdshere.com/'
 
     # @unittest.skip

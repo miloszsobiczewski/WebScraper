@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from urllib3 import PoolManager
 import urllib.request
 import requests
+from os import path, system
 
 
 def get_conn(url):
@@ -59,14 +60,16 @@ def get_txt(url):
     return text
 
 
-def save_txt(file_name, url):
+def save_txt(file_name, url, subdir=''):
     """
     Save scraped text to .txt file
     :param file_name:
     :param url:
+    :param subdir:
     :return:
     """
     text = get_txt(url)
+    create_subdir('static/api/', subdir)
     try:
         with open(file_name, "w") as text_file:
             print(text, file=text_file)
@@ -106,6 +109,8 @@ def save_img(url, subdir=''):
     :return: operation status, list of saved images
     """
     links = get_images(url)
+    create_subdir('static/api/', subdir)
+
     if len(links) > 0:
         images = [STATIC_URL[1:] + 'api/' + subdir +
                   img.split('/')[-1] for img in links]
@@ -122,3 +127,8 @@ def save_img(url, subdir=''):
         res = True
         images = []
     return res, images
+
+
+def create_subdir(dir, subdir):
+    if path.isdir(dir + subdir) is False and subdir != '':
+        system('mkdir ' + dir + '/' + subdir)
