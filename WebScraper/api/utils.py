@@ -107,13 +107,13 @@ def save_img(url, subdir=''):
     """
     links = get_images(url)
     if len(links) > 0:
-        images = [STATIC_URL[1:] + 'webscraper/' + subdir +
+        images = [STATIC_URL[1:] + 'api/' + subdir +
                   img.split('/')[-1] for img in links]
         try:
             print('Downloading images to current working directory.')
             for i in range(len(links)):
                 urllib.request.urlretrieve(links[i],
-                     STATIC_URL[1:] + 'webscraper/' + subdir +
+                     STATIC_URL[1:] + 'api/' + subdir +
                                            images[i].split('/')[-1])
             res = True
         except:

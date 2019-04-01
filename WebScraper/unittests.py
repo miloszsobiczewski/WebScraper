@@ -46,7 +46,7 @@ class WebScraperUnitTests(unittest.TestCase):
         check if saving file correctly
         :return:
         """
-        file_path = STATIC_URL[1:] + 'webscraper/unittests/test_text.txt'
+        file_path = STATIC_URL[1:] + 'api/unittests/test_text.txt'
         ut.save_txt(file_path, self.good_url)
         self.assertTrue(os.path.isfile(file_path))
 
@@ -79,7 +79,7 @@ class WebScraperUnitTests(unittest.TestCase):
         Remove saved files
         :return:
         """
-        os.system('rm static/webscraper/unittests/*')
+        os.system('rm static/api/unittests/*')
 
 
 if __name__ == '__main__':

@@ -22,7 +22,7 @@ def webscraper(request):
                 instance.save()
                 hash = random.getrandbits(32)
                 file_name = \
-                    STATIC_URL + 'webscraper/text_' + str(hash) + '.txt'
+                    STATIC_URL + 'api/text_' + str(hash) + '.txt'
                 res = ut.save_txt(file_name[1:], url)
                 if res:
                     instance.status = 'saving txt complete'
@@ -32,7 +32,7 @@ def webscraper(request):
                     result = 'Task failed!'
                     instance.status = 'saving txt failed'
                     instance.save()
-                    return render(request, 'webscraper/home.html',
+                    return render(request, 'api/home.html',
                                   {'taskform': taskform, 'result': result})
 
             # scraping images
@@ -57,7 +57,7 @@ def webscraper(request):
                     result = 'Task failed!'
                     instance.status = 'saving img failed'
                     instance.save()
-                    return render(request, 'webscraper/home.html',
+                    return render(request, 'api/home.html',
                                   {'taskform': taskform, 'result': result})
 
             instance.status = 'complete'
@@ -68,14 +68,14 @@ def webscraper(request):
     else:
         result = 'Ready to schedule task'
         taskform = TaskForm()
-    return render(request, 'webscraper/home.html', {'taskform': taskform,
+    return render(request, 'api/home.html', {'taskform': taskform,
                                                     'result': result})
 
 
 def status(request):
     data = Task.objects.all().order_by('-id')
-    return render(request, 'webscraper/tasks.html', {'data': data})
+    return render(request, 'api/tasks.html', {'data': data})
 
 
 def site(request):
-    return render(request, 'webscraper/site.html')
+    return render(request, 'api/site.html')
