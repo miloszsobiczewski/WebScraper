@@ -1,0 +1,60 @@
+{% load apptags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+<h1>Webscraper Tasks</h1>
+
+<a href="{% url 'tasks' %}">
+    <button type="submit" form="Run" name="Refresh" value="refresh">Refresh Page</button>
+</a>
+<a href="{% url 'api' %}">
+    <button type="submit" form="Run" name="Refresh" value="refresh">Schedule new task</button>
+</a>
+
+<p></p>
+
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <td><b>task id</b></td>
+            <td><b>task status</b></td>
+            <td><b>site url</b></td>
+            <td><b>text</b></th>
+            <td><b>images</b></td>
+            <td><b>date</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in data %}
+            <tr>
+                <td>[{{ task.id }}]</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.url }}</td>
+                <td>
+                    {% if task.txt_ind %}
+                    <a href=" {{ task.txt_slug }}" download>text</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if task.img_ind %}
+                        {% with task.img_slug|split:"," as links %}
+                            {% for link in links %}
+                                <a href="{{ link }}" download>{{ forloop.counter }}</a>
+                            {% endfor %}
+                        {% endwith %}
+                    {% endif %}
+                </td>
+                <td>{{ task.date }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
