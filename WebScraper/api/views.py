@@ -4,7 +4,7 @@ from .forms import TaskForm
 import pdb
 from . import utils as ut
 import random
-from web_scraper.settings import STATIC_URL
+from WebScraper.settings import STATIC_URL
 
 
 # Create your views here.

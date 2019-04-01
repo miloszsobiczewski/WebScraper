@@ -1,4 +1,4 @@
-from web_scraper.settings import STATIC_URL
+from WebScraper.settings import STATIC_URL
 from bs4 import BeautifulSoup
 from urllib3 import PoolManager
 import urllib.request
