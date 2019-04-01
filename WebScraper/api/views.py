@@ -4,7 +4,7 @@ from .forms import TaskForm
 from . import utils as ut
 import random
 from WebScraper.settings import STATIC_URL
-import pdb
+
 
 # Create your views here.
 def webscraper(request):
@@ -24,7 +24,6 @@ def webscraper(request):
                 hash = random.getrandbits(32)
                 file_name = STATIC_URL + 'api/' + subdir + 'text_' \
                     + str(hash) + '.txt'
-                pdb.set_trace()
                 res = ut.save_txt(file_name[1:], url, subdir)
                 if res:
                     instance.status = 'saving txt complete'
