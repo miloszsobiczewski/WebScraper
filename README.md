@@ -45,6 +45,7 @@ login: `new`
 
 password: `New_12345`
 
+Scraped files are stored in __./static/api/TAKS_ID__ directory
 ### Tasks
 
 Mentioned database was also used for scraping tasks monitoring.
