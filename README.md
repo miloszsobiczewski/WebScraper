@@ -51,7 +51,7 @@ Scraped files are stored in __./static/api/TAKS_ID__ directory
 Mentioned database was also used for scraping tasks monitoring.
 Additionally Task status dashboard was created under following url:
 ```buildoutcfg
-http://0.0.0.0:8000/WebScraper/Tasks/
+http://0.0.0.0:8000/api/tasks/
 ```
 Dashboard allows to check the current task status and download scraped data (
 text and images ) for all completed ones. 
@@ -76,5 +76,5 @@ sudo docker exec -it CONTAINDER_ID python unittests.py
 2. Not very effective on following ones:
     * https://www.wykop.pl/
     * https://www.wp.pl/
-3. It is not 100% REST API, thou it can be transformed using Django Rest 
+3. It is not 100% REST API, though it can be transformed using Django Rest 
 Framework - which a did not have the opportunity to use so far.
